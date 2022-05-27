@@ -1,0 +1,30 @@
+{
+    "name": "beehexa/webhook-php",
+    "type": "library",
+    "description": "Webhook library for Beehexa packages",
+    "keywords": ["beehexa","webhook","library","hexasync"],
+    "homepage": "https://www.beehexa.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Beehexa",
+            "email": "hoang.hieu@beehexa.com",
+            "homepage": "https://www.beehexa.com/",
+            "role": "Magento Developer"
+        }
+    ],
+    "require": {
+        "php": "~7.2 || ~8.0 || ~8.1",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "*",
+        "psr/container": "^1.0"
+    },
+    "support": {
+        "forum": "https://www.beehexa.com/"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beehexa\\WebhookPhp\\": "src/"
+        }
+    }
+}
