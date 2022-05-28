@@ -13,20 +13,28 @@ use Beehexa\WebhookPhp\Hook\Data\HookMessageInterface;
 
 abstract class AbstractHookSender implements HookStrategyInterface
 {
+    /**
+     * @var string|null
+     */
     protected $serviceEndpoint;
 
-
+    /**
+     * @var string
+     */
     protected $channelName;
 
     /**
-     * @param string $serviceEndpoint
+     * @param string|null $serviceEndpoint
      */
-    public function __construct(string $serviceEndpoint)
+    public function __construct(?string $serviceEndpoint = null)
     {
         $this->serviceEndpoint = $serviceEndpoint;
         $this->registerConverter();
     }
 
+    /**
+     * @return string
+     */
     public function getEndpoint(): string
     {
         return $this->serviceEndpoint;
