@@ -10,32 +10,25 @@ use Beehexa\WebhookPhp\Framework\DataObject;
 
 class MessageField extends DataObject implements MessageFieldInterface
 {
+
     /**
-     * Getter for Field.
-     *
-     * @return string|null
+     * @inheirtDoc
      */
-    public function getField(): ?string
+    public function getName(): ?string
     {
-        return $this->getData(self::FIELD);
+        return $this->getData(self::FIELD_NAME);
     }
 
     /**
-     * Setter for Field.
-     *
-     * @param string|null $field
-     *
-     * @return void
+     * @inheirtDoc
      */
-    public function setField(?string $field): void
+    public function setName(?string $name): void
     {
-        $this->setData(self::FIELD, $field);
+        $this->setData(self::FIELD_NAME, $name);
     }
 
     /**
-     * Getter for Value.
-     *
-     * @return string|null
+     * @inheirtDoc
      */
     public function getValue(): ?string
     {
@@ -43,11 +36,7 @@ class MessageField extends DataObject implements MessageFieldInterface
     }
 
     /**
-     * Setter for Value.
-     *
-     * @param string|null $value
-     *
-     * @return void
+     * @inheirtDoc
      */
     public function setValue(?string $value): void
     {

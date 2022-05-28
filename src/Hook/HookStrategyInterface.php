@@ -8,13 +8,13 @@ namespace Beehexa\WebhookPhp\Hook;
 
 use  Beehexa\WebhookPhp\Hook\Data\HookMessageInterface;
 
-interface HookInterface
+interface HookStrategyInterface
 {
     /**
      * @param HookMessageInterface|null $message
      * @return boolean
      * @throw \Exception
      */
-    public function push(string $serviceEndpoint, ?HookMessageInterface $message);
+    public function push(?HookMessageInterface $message);
 
 }

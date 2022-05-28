@@ -11,24 +11,24 @@ interface MessageFieldInterface
     /**
      * String constants for property names
      */
-    const FIELD = "field";
+    const FIELD_NAME = "name";
     const VALUE = "value";
 
     /**
-     * Getter for Field.
+     * Getter for Name.
      *
      * @return string|null
      */
-    public function getField(): ?string;
+    public function getName(): ?string;
 
     /**
-     * Setter for Field.
+     * Setter for Name.
      *
-     * @param string|null $field
+     * @param string|null $name
      *
      * @return void
      */
-    public function setField(?string $field): void;
+    public function setName(?string $name): void;
 
     /**
      * Getter for Value.

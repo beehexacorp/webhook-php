@@ -11,17 +11,17 @@ interface HookMessageInterface
     /**
      * String constants for property names
      */
-    const ID     = "id";
+    const ENTITY_ID     = "id";
     const EVENT  = "event";
     const TEXT   = "text";
-    const BLOCKS = "blocks";
+    const FIELDS = "fields";
 
     /**
      * Getter for Id.
      *
      * @return string|null
      */
-    public function getId(): ?string;
+    public function getEntityId(): ?string;
 
     /**
      * Setter for Id.
@@ -30,7 +30,7 @@ interface HookMessageInterface
      *
      * @return void
      */
-    public function setId(?string $id): void;
+    public function setEntityId(?string $id): void;
 
     /**
      * Getter for Event.

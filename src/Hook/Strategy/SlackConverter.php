@@ -8,7 +8,7 @@ namespace Beehexa\WebhookPhp\Convert;
 
 use Beehexa\WebhookPhp\Hook\Data\HookMessageInterface;
 
-class Slack implements RequestConverterInterface
+class SlackConverter implements RequestConverterInterface
 {
     /**
      * @inheirtDoc
@@ -22,7 +22,7 @@ class Slack implements RequestConverterInterface
                     "type" => "section",
                     "text" => [
                         "type" => "mrkdwn",
-                        "text" => sprintf("%s: %s", $field->getField(), $field->getValue())
+                        "text" => sprintf("%s: %s", $field->getName(), $field->getValue())
                     ]
                 ];
             }

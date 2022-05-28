@@ -11,31 +11,23 @@ use Beehexa\WebhookPhp\Framework\DataObject;
 class HookMessage extends DataObject implements HookMessageInterface
 {
     /**
-     * Getter for Id.
-     *
-     * @return string|null
+     * @inheirtDoc
      */
-    public function getId(): ?string
+    public function getEntityId(): ?string
     {
-        return $this->getData(self::ID);
+        return $this->getData(self::ENTITY_ID);
     }
 
     /**
-     * Setter for Id.
-     *
-     * @param string|null $id
-     *
-     * @return void
+     * @inheirtDoc
      */
-    public function setId(?string $id): void
+    public function setEntityId(?string $id): void
     {
-        $this->setData(self::ID, $id);
+        $this->setData(self::ENTITY_ID, $id);
     }
 
     /**
-     * Getter for Event.
-     *
-     * @return string|null
+     * @inheirtDoc
      */
     public function getEvent(): ?string
     {
@@ -43,11 +35,7 @@ class HookMessage extends DataObject implements HookMessageInterface
     }
 
     /**
-     * Setter for Event.
-     *
-     * @param string|null $event
-     *
-     * @return void
+     * @inheirtDoc
      */
     public function setEvent(?string $event): void
     {
@@ -55,9 +43,7 @@ class HookMessage extends DataObject implements HookMessageInterface
     }
 
     /**
-     * Getter for Text.
-     *
-     * @return string|null
+     * @inheirtDoc
      */
     public function getText(): ?string
     {
@@ -65,11 +51,7 @@ class HookMessage extends DataObject implements HookMessageInterface
     }
 
     /**
-     * Setter for Text.
-     *
-     * @param string|null $text
-     *
-     * @return void
+     * @inheirtDoc
      */
     public function setText(?string $text): void
     {
@@ -77,25 +59,18 @@ class HookMessage extends DataObject implements HookMessageInterface
     }
 
     /**
-     * Getter for Blocks.
-     *
-     * @return int|null
+     * @inheirtDoc
      */
     public function getFields(): ?int
     {
-        return $this->getData(self::BLOCKS) === null ? null
-            : (int)$this->getData(self::BLOCKS);
+        return $this->_getData(self::FIELDS);
     }
 
     /**
-     * Setter for Blocks.
-     *
-     * @param array|null $fields
-     *
-     * @return void
+     * @inheirtDoc
      */
     public function setFields(?array $fields): void
     {
-        $this->setData(self::BLOCKS, $fields);
+        $this->setData(self::FIELDS, $fields);
     }
 }
