@@ -7,7 +7,6 @@
 namespace Beehexa\WebhookPhp\Hook\Strategy;
 
 use Beehexa\WebhookPhp\Convert\ConverterBuilder;
-use Beehexa\WebhookPhp\Convert\SlackConverter;
 use Beehexa\WebhookPhp\Hook\AbstractHookSender;
 
 class SlackChannel extends AbstractHookSender

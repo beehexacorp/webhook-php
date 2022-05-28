@@ -69,7 +69,7 @@ interface HookMessageInterface
      *
      * @return MessageFieldInterface[]|null
      */
-    public function getFields(): ?int;
+    public function getFields(): ?array;
 
     /**
      * Setter for Fields.

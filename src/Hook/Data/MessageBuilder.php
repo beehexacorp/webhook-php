@@ -51,6 +51,12 @@ class MessageBuilder
         $this->fields[$name] = $value;
     }
 
+    public function clear(){
+        $this->id = '';
+        $this->fields = [];
+        $this->message = '';
+    }
+
     /**
      * @return HookMessageInterface
      */

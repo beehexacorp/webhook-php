@@ -4,9 +4,10 @@
  * See COPYING.txt for license details.
  */
 
-namespace Beehexa\WebhookPhp\Convert;
+namespace Beehexa\WebhookPhp\Hook\Strategy;
 
 use Beehexa\WebhookPhp\Hook\Data\HookMessageInterface;
+use Beehexa\WebhookPhp\Convert\RequestConverterInterface;
 
 class SlackConverter implements RequestConverterInterface
 {
