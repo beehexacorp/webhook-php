@@ -61,7 +61,7 @@ class HookMessage extends DataObject implements HookMessageInterface
     /**
      * @inheirtDoc
      */
-    public function getFields(): ?int
+    public function getFields(): ?array
     {
         return $this->_getData(self::FIELDS);
     }
