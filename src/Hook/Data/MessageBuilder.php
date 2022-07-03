@@ -62,20 +62,20 @@ class MessageBuilder
      */
     public function build()
     {
-        $message = new \Beehexa\WebhookPhp\Hook\Data\HookMessage();
-        $message->setText($this->message);
-        $message->setEntityId($this->id);
-        $fields = [];
+        $hookMessage = new \Beehexa\WebhookPhp\Hook\Data\HookMessage();
+        $hookMessage->setText($this->message);
+        $hookMessage->setEntityId($this->id);
+        $messageFields = [];
         if (!empty($this->fields)) {
             foreach ($this->fields as $name => $value) {
-                $fields[] = new \Beehexa\WebhookPhp\Hook\Data\MessageField([
+                $messageFields[] = new \Beehexa\WebhookPhp\Hook\Data\MessageField([
                     'name'  => $name,
                     'value' => $value,
                 ]);
 
             }
-            $message->setFields($fields);
+            $hookMessage->setFields($messageFields);
         }
-        return $message;
+        return $hookMessage;
     }
 }
