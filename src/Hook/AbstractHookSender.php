@@ -24,20 +24,51 @@ abstract class AbstractHookSender implements HookStrategyInterface
     protected $channelName;
 
     /**
+     * @var string
+     */
+    private $apiToken;
+
+    /**
      * @param string|null $serviceEndpoint
      */
-    public function __construct(?string $serviceEndpoint = null)
+    public function __construct(?string $serviceEndpoint = null,?string $apiToken = null)
     {
         $this->serviceEndpoint = $serviceEndpoint;
+        $this->apiToken = $apiToken;
         $this->registerConverter();
     }
+
+    protected function buildUrl(array $parts) {
+        return (isset($parts['scheme']) ? "{$parts['scheme']}:" : '') .
+            ((isset($parts['user']) || isset($parts['host'])) ? '//' : '') .
+            (isset($parts['user']) ? "{$parts['user']}" : '') .
+            (isset($parts['pass']) ? ":{$parts['pass']}" : '') .
+            (isset($parts['user']) ? '@' : '') .
+            (isset($parts['host']) ? "{$parts['host']}" : '') .
+            (isset($parts['port']) ? ":{$parts['port']}" : '') .
+            (isset($parts['path']) ? "{$parts['path']}" : '') .
+            (isset($parts['query']) ? "?{$parts['query']}" : '') .
+            (isset($parts['fragment']) ? "#{$parts['fragment']}" : '');
+    }
+
 
     /**
      * @return string
      */
     public function getEndpoint(): string
     {
-        return $this->serviceEndpoint;
+        $serviceEndpoint = $this->serviceEndpoint;
+        if($this->apiToken) {
+            $apiParams = [];
+            $parsed = parse_url($this->serviceEndpoint);
+            if (!empty($parsed['query'])) {
+                parse_str($parsed['query'], $apiParams);
+            }
+            $apiParams['apiToken'] = $this->apiToken;
+            $parsed['query'] = http_build_query($apiParams);
+            $serviceEndpoint = $this->buildUrl($parsed);
+        }
+        return $serviceEndpoint;
     }
 
     /**
