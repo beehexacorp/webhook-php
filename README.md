@@ -12,7 +12,7 @@ $messageBuilder->setEntityId(123);
 $messageBuilder->addField('event_name', 'update');
 $messageBuilder->addField('entity_type', 'entity_type');
 $messageBuilder->addField('entity_id', 'entity_id');
-$message = $this->messageBuilder->build();
+$message = $messageBuilder->build();
 
 /// Sample Slack stretagy::
 $hookURL = 'https://hooks.slack.com/services/xxxx/xxxx/xxxx';
