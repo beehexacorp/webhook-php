@@ -73,4 +73,12 @@ class HookMessage extends DataObject implements HookMessageInterface
     {
         $this->setData(self::FIELDS, $fields);
     }
+
+    /**
+     * @inheirtDoc
+     */
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }
 }

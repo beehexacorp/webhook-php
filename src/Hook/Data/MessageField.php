@@ -42,4 +42,12 @@ class MessageField extends DataObject implements MessageFieldInterface
     {
         $this->setData(self::VALUE, $value);
     }
+
+    /**
+     * @inheirtDoc
+     */
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }
 }

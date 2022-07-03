@@ -12,6 +12,6 @@ class DefaultConverter implements RequestConverterInterface
 {
     public function convert(HookMessageInterface $message)
     {
-        return (array)$message;
+        return $message->convertToArray();
     }
 }
