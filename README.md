@@ -4,7 +4,12 @@
 
 PHP Library, which used for pushing a message to a webhook.
 
-### How to use the library 
+## Installation
+### Type 1: Composer 
+``composer require beehexa/webhook-php``
+
+
+## How to use the library 
 ```
 $messageBuilder = new Beehexa\WebhookPhp\Hook\Data\MessageBuilder();
 $messageBuilder->setText('product');
