@@ -8,10 +8,10 @@ PHP Library, which used for pushing a message to a webhook.
 ```
 $messageBuilder = new Beehexa\WebhookPhp\Hook\Data\MessageBuilder();
 $messageBuilder->setText('product');
-$messageBuilder->setEntityId('entity_id');
+$messageBuilder->setEntityId(123);
 $messageBuilder->addField('event_name', 'update');
-$messageBuilder->addField('entity_type', $this->getEntityName());
-$messageBuilder->addField('entity_id', $entity->getId());
+$messageBuilder->addField('entity_type', 'entity_type');
+$messageBuilder->addField('entity_id', 'entity_id');
 $message = $this->messageBuilder->build();
 
 /// Sample Slack stretagy::
