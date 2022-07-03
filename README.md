@@ -1,4 +1,4 @@
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=hhieubeehexa_webhook-php)'
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hhieubeehexa_webhook-php&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hhieubeehexa_webhook-php)
 
 # Beehexa webhook library
 
