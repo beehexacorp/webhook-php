@@ -9,9 +9,9 @@
     "authors": [
         {
             "name": "Beehexa",
-            "email": "hoang.hieu@beehexa.com",
+            "email": "support@beehexa.com",
             "homepage": "https://www.beehexa.com/",
-            "role": "Magento Developer"
+            "role": "Magento 2 plugin contributor"
         }
     ],
     "minimum-stability": "dev",
