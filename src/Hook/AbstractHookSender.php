@@ -57,18 +57,18 @@ abstract class AbstractHookSender implements HookStrategyInterface
      */
     public function getEndpoint(): string
     {
-        $serviceEndpoint = $this->serviceEndpoint;
+        $_serviceEndpoint = $this->serviceEndpoint;
         if($this->apiToken) {
             $apiParams = [];
-            $parsed = parse_url($this->serviceEndpoint);
+            $parsed = parse_url($_serviceEndpoint);
             if (!empty($parsed['query'])) {
                 parse_str($parsed['query'], $apiParams);
             }
             $apiParams['apiToken'] = $this->apiToken;
             $parsed['query'] = http_build_query($apiParams);
-            $serviceEndpoint = $this->buildUrl($parsed);
+            $_serviceEndpoint = $this->buildUrl($parsed);
         }
-        return $serviceEndpoint;
+        return $_serviceEndpoint;
     }
 
     /**
