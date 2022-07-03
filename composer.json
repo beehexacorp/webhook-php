@@ -17,7 +17,7 @@
     "require": {
         "php": "~7.2 || ~8.0 || ~8.1",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "~7",
+        "guzzlehttp/guzzle": ">=7.4.5",
         "psr/container": "^1.0"
     },
     "support": {
