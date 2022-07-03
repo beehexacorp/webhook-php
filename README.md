@@ -1,3 +1,5 @@
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=hhieubeehexa_webhook-php)'
+
 # Beehexa webhook library
 
 PHP Library, which used for pushing a message to a webhook.
