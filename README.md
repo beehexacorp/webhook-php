@@ -1,5 +1,3 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=hhieubeehexa_webhook-php&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=hhieubeehexa_webhook-php)
-
 # Beehexa webhook library
 
 PHP Library, which used for pushing a message to a webhook.
