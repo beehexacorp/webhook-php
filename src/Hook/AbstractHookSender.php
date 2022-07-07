@@ -51,6 +51,17 @@ abstract class AbstractHookSender implements HookStrategyInterface
             (isset($parts['fragment']) ? "#{$parts['fragment']}" : '');
     }
 
+    /**
+     * @param string|null $baseUrl
+     * @return \GuzzleHttp\ClientInterface
+     */
+    protected function getHttpClient(?string $baseUrl = null){
+        $config = [];
+        if($baseUrl){
+            $config['base_uri'] = $baseUrl;
+        }
+        return new \GuzzleHttp\Client($config);
+    }
 
     /**
      * @return string
@@ -84,7 +95,7 @@ abstract class AbstractHookSender implements HookStrategyInterface
             throw new \Exception("Converter is not implement of RequestConverterInterface");
         }
         $body = $converter->convert($message);
-        $client = new \GuzzleHttp\Client();
+        $client = $this->getHttpClient();
         $response = $client->post($this->getEndpoint(), ['json' => $body]);
         if ($response->getStatusCode() !== 200) {
             throw new TransferException(sprintf("Has an exception during publish the message. \r\n" .
