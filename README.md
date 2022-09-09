@@ -19,8 +19,8 @@ $message = $messageBuilder->build();
 
 /// Sample Slack stretagy::
 $hookURL = 'https://hooks.slack.com/services/xxxx/xxxx/xxxx';
-$hookStrategy = Beehexa\WebhookPhp\Hook\Strategy\SlackChannel($hookURL);
+$hookStrategy = new Beehexa\WebhookPhp\Hook\Strategy\SlackChannel($hookURL);
 
-$hookContext = new HookContext($hookStrategy);
+$hookContext = new \Beehexa\WebhookPhp\HookContext($hookStrategy);
 $hookContext->exec($message);
 ```
