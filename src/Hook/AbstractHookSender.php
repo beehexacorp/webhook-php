@@ -10,9 +10,11 @@ use GuzzleHttp\Exception\TransferException;
 use Beehexa\WebhookPhp\Convert\ConverterBuilder;
 use Beehexa\WebhookPhp\Convert\RequestConverterInterface;
 use Beehexa\WebhookPhp\Hook\Data\HookMessageInterface;
+use GuzzleHttp\Utils;
 
 abstract class AbstractHookSender implements HookStrategyInterface
 {
+    public const ALGO_SHA256 = 'sha256';
     /**
      * @var string|null
      */
@@ -26,15 +28,17 @@ abstract class AbstractHookSender implements HookStrategyInterface
     /**
      * @var string
      */
-    private $apiToken;
+    private $apiSecret;
+
 
     /**
      * @param string|null $serviceEndpoint
+     * @param string|null $apiSecret
      */
-    public function __construct(?string $serviceEndpoint = null,?string $apiToken = null)
+    public function __construct(?string $serviceEndpoint = null,?string $apiSecret = null)
     {
         $this->serviceEndpoint = $serviceEndpoint;
-        $this->apiToken = $apiToken;
+        $this->apiSecret = $apiSecret;
         $this->registerConverter();
     }
 
@@ -69,7 +73,10 @@ abstract class AbstractHookSender implements HookStrategyInterface
     public function getEndpoint(): string
     {
         $_serviceEndpoint = $this->serviceEndpoint;
-        if($this->apiToken) {
+        /**
+         * Remove this line because change the strategy
+         */
+        /*if($this->apiToken) {
             $apiParams = [];
             $parsed = parse_url($_serviceEndpoint);
             if (!empty($parsed['query'])) {
@@ -78,7 +85,7 @@ abstract class AbstractHookSender implements HookStrategyInterface
             $apiParams['apiToken'] = $this->apiToken;
             $parsed['query'] = http_build_query($apiParams);
             $_serviceEndpoint = $this->buildUrl($parsed);
-        }
+        }*/
         return $_serviceEndpoint;
     }
 
@@ -96,7 +103,19 @@ abstract class AbstractHookSender implements HookStrategyInterface
         }
         $body = $converter->convert($message);
         $client = $this->getHttpClient();
-        $response = $client->post($this->getEndpoint(), ['json' => $body]);
+        $headers = [];
+        if($this->apiSecret){
+            $algo = static::ALGO_SHA256;
+            $requestBody = Utils::jsonEncode($body);
+            $signature = hash_hmac($algo, $requestBody, $this->apiSecret);
+            $headers = [
+                'X-Hook-Signature-256' => static::ALGO_SHA256 . '=' . $signature
+            ];
+        }
+        $response = $client->post($this->getEndpoint(), [
+            'json' => $body,
+            'headers' => $headers
+        ]);
         if ($response->getStatusCode() !== 200) {
             throw new TransferException(sprintf("Has an exception during publish the message. \r\n" .
                 "Status Code: %s, Body: %s", $response->getStatusCode(), $response->getBody()));
