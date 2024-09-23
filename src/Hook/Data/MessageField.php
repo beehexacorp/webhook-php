@@ -46,7 +46,7 @@ class MessageField extends DataObject implements MessageFieldInterface
     /**
      * @inheirtDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }
