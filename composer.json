@@ -1,7 +1,7 @@
 {
     "name": "beehexa/webhook-php",
     "type": "library",
-    "version": "v1.1.0",
+    "version": "v1.2.0",
     "description": "Webhook library for Beehexa packages",
     "keywords": ["beehexa","webhook","library","hexasync"],
     "homepage": "https://www.beehexa.com/",

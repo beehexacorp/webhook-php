@@ -6,7 +6,7 @@
 
 namespace Beehexa\WebhookPhp\Hook\Data;
 
-interface MessageFieldInterface extends \JsonSerializable
+interface MessageFieldInterface
 {
     /**
      * String constants for property names
