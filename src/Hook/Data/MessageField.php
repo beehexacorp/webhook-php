@@ -8,7 +8,7 @@ namespace Beehexa\WebhookPhp\Hook\Data;
 
 use Beehexa\WebhookPhp\Framework\DataObject;
 
-class MessageField extends DataObject implements MessageFieldInterface
+class MessageField extends DataObject implements MessageFieldInterface, \JsonSerializable
 {
 
     /**
@@ -43,4 +43,11 @@ class MessageField extends DataObject implements MessageFieldInterface
         $this->setData(self::VALUE, $value);
     }
 
+    /**
+     * @return string[]
+     */
+    public function jsonSerialize()
+    {
+        return $this->toArray();
+    }
 }
